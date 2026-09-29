@@ -9,6 +9,7 @@ const port = Number(process.env.PORT || 8080);
 
 app.disable("x-powered-by");
 app.use(helmet());
+
 const allowedOrigins = (process.env.FRONTEND_ORIGIN || "")
   .split(",")
   .map(v => v.trim())
@@ -22,6 +23,7 @@ app.use(cors({
       }
     : true
 }));
+
 app.use(express.json({ limit: "16kb" }));
 app.use(morgan("combined"));
 
